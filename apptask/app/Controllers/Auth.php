@@ -30,7 +30,7 @@ class Auth extends \IonAuth\Controllers\Auth
 				// if the login was un-successful
 				// redirect them back to the login page
 				$this->session->setFlashdata('message', $this->ionAuth->errors($this->validationListTemplate));
-                //$this->session->setFlashdata('message', $this->ionAuth->errors('my_list'));
+
 				// use redirects instead of loading views for compatibility with MY_Controller libraries
 				return redirect()->back()->withInput();
 			}
@@ -54,7 +54,6 @@ class Auth extends \IonAuth\Controllers\Auth
 				'type' => 'password',
 			];
             
-            //return $this->renderPage($this->viewsFolder . DIRECTORY_SEPARATOR . 'login', $this->data);
             return $this->renderPage('login_full', $this->data);
 		}
     }
@@ -72,12 +71,7 @@ class Auth extends \IonAuth\Controllers\Auth
     public function create_user()
 	{
 		$this->data['title'] = lang('Auth.create_user_heading');
-        /*
-		if (! $this->ionAuth->loggedIn() || ! $this->ionAuth->isAdmin())
-		{
-			return redirect()->to('/auth');
-		}
-        */
+
 		$tables                        = $this->configIonAuth->tables;
 		$identityColumn                = $this->configIonAuth->identity;
 		$this->data['identity_column'] = $identityColumn;
@@ -174,7 +168,6 @@ class Auth extends \IonAuth\Controllers\Auth
 				'value' => set_value('password_confirm'),
 			];
 
-			//return $this->renderPage($this->viewsFolder . DIRECTORY_SEPARATOR . 'create_user', $this->data);
             return $this->renderPage('register_full', $this->data);
 		}
 	}

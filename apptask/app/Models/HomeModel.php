@@ -23,7 +23,6 @@ class HomeModel extends Model{
         $query = $builder->get();
         
         return $query->getResultArray();
-        // return $builder->getCompiledSelect();
     }
     
     public function add_contact_to_private($data){
